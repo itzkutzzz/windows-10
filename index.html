@@ -1,0 +1,1178 @@
+
+<!DOCTYPE html><html w-tid="1"><head w-tid="3"><base href simulated-href="." w-tid="5"/>
+<title>Windows 10 Simulator</title>
+<meta property="og:title" content="Windows 10 Simulator"/>
+<meta property="og:url" content="https://windows-10-simulator--kut.on.websim.ai?v=31"/>
+<meta property="og:type" content="website"/>
+<meta property="twitter:card" content="summary_large_image"/>
+<meta property="og:image" content="https://images.websim.ai/v1/project/4l1fgslxd37o64se7dj_/revision/31/1200.jpeg"/>
+<meta property="twitter:image" content="https://images.websim.ai/v1/project/4l1fgslxd37o64se7dj_/revision/31/1200.jpeg"/>
+<link rel="stylesheet" href="https://api.websim.ai/fonts.css?v=a1282895bceeac6751c7a025c3d46510fdd29e3b">
+<link rel="stylesheet" href="https://api.websim.ai/ctxmenu.css?v=a1282895bceeac6751c7a025c3d46510fdd29e3b">
+<script class="websim-injected">__WEBSIM_DATA__={"home":false,"hostOrigin":"https://websim.ai","apiOrigin":"https://api.websim.ai","isTopLevelFrame":true,"project_id":"4l1fgslxd37o64se7dj_","route":{"type":"slug","username":"kut","slug":"windows-10-simulator","version":31}}</script>
+<script class="websim-injected" src="https://api.websim.ai/dist/index.js?v=a1282895bceeac6751c7a025c3d46510fdd29e3b"></script>
+
+<!--title>Windows 10 Simulator</title-->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%230078D7' d='M3,12V6.75L9,5.43V11.91L3,12M20,3V11.75L10,11.9V5.21L20,3M3,13L9,13.09V19.9L3,18.75V13M20,13.25V22L10,20.09V13.1L20,13.25Z'/></svg>" w-tid="9"/>
+<style w-tid="11">
+* {margin: 0; padding: 0; box-sizing: border-box; user-select: none;}
+:root {
+    --primary-bg: #0078D7;
+    --primary-text: #ffffff;
+    --secondary-bg: #f5f5f5;
+}
+body {
+    background: var(--primary-bg);
+    color: var(--primary-text);
+    font-family: 'Segoe UI', sans-serif;
+    height: 100vh;
+    overflow: hidden;
+}
+.desktop {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background-image: url('https://windows10spotlight.com/wp-content/uploads/2022/01/c6cd8c1c38dcd49741558feb4ac91845.jpg');
+    background-size: cover;
+    background-color: var(--primary-bg);
+}
+.taskbar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    z-index: 1000;
+}
+.start-btn {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.start-btn svg {
+    width: 24px;
+    height: 24px;
+}
+.start-btn:hover {
+    background: rgba(255,255,255,0.1);
+}
+.start-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: fixed;
+    bottom: 40px;
+    left: 0;
+    width: 350px;
+    height: 600px;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(20px);
+    display: none;
+    padding: 20px;
+    color: white;
+    z-index: 999;
+}
+.start-menu-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.start-menu-item:hover {
+    background: rgba(255,255,255,0.1);
+}
+.start-menu-item svg {
+    width: 24px;
+    height: 24px;
+}
+.window {
+    position: absolute;
+    background: var(--secondary-bg);
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    min-width: 300px;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    color: black; /* All Default Application Window Text */
+}
+.title-bar {
+    background: #f0f0f0;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px 5px 0 0;
+}
+.title-bar-controls {
+    display: flex;
+    gap: 5px;
+}
+.control-btn {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.close { background: #ff5c5c; }
+.maximize { 
+    background: #00ca56;
+    display: block !important; 
+}
+.desktop-icon {
+    width: 70px;
+    text-align: center;
+    color: white;
+    margin: 10px;
+    cursor: pointer;
+    padding: 5px;
+}
+.desktop-icon div {
+    color: white; /* Desktop Icon Text */
+}
+.desktop-icon:hover {
+    background: rgba(255,255,255,0.1);
+}
+.desktop-icon img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 5px;
+}
+.time {
+    position: absolute;
+    right: 10px;
+    color: white;
+}
+.error-window {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #f0f0f0;
+    border: 1px solid #999;
+    border-radius: 6px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    width: 400px;
+    z-index: 9999;
+    color: black; /* Ensure error text is black */
+}
+.error-title {
+    background: #0078D7;
+    color: white;
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 6px 6px 0 0;
+}
+.error-content {
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+.error-icon {
+    width: 32px;
+    height: 32px;
+}
+.error-message {
+    flex: 1;
+    font-size: 12px;
+}
+.error-buttons {
+    padding: 15px;
+    background: #f0f0f0;
+    text-align: right;
+    border-top: 1px solid #ddd;
+}
+.error-btn {
+    padding: 5px 20px;
+    background: #e1e1e1;
+    border: 1px solid #adadad;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.error-btn:hover {
+    background: #e5f1fb;
+    border-color: #0078D7;
+}
+.error-window-creator {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.error-window-creator input, 
+.error-window-creator textarea,
+.error-window-creator select {
+    padding: 5px;
+    width: 100%;
+    margin-bottom: 5px;
+}
+.window-content {
+    padding: 20px;
+    overflow: auto;
+    flex: 1;
+}
+.folder-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+    padding: 10px;
+}
+.folder-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+    cursor: pointer;
+}
+.folder-item:hover {
+    background: #f0f0f0;
+}
+.background-customizer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+}
+.color-option {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    transition: transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: black; /* Default for light background */
+}
+.color-option:hover {
+    transform: scale(1.1);
+}
+.color-option.active {
+    border-color: gold;
+}
+.notification {
+    position: fixed;
+    bottom: 50px;
+    right: 20px;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    backdrop-filter: blur(10px);
+    animation: slideIn 0.3s ease-out;
+    z-index: 9999;
+}
+.notification-icon {
+    font-size: 24px;
+}
+.notification-sender {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: white; /* Notifications Sender Text */
+}
+.notification-message {
+    color: white; /* Notifications Message Text */
+}
+.notification-time {
+    font-size: 0.8em;
+    color: #888;
+}
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+.taskbar-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+    color: white;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.taskbar-item:hover {
+    background: rgba(255,255,255,0.1);
+}
+.notification-center {
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(20px);
+    color: white;
+}
+.notification-list {
+    padding: 10px;
+    overflow-y: auto;
+}
+.notification-item {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    gap: 10px;
+}
+.bluescreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #0078D7;
+    color: white;
+    z-index: 99999;
+    padding: 100px;
+}
+.sad-face {
+    font-size: 80px;
+    margin-bottom: 20px;
+}
+.progress {
+    width: 300px;
+    height: 4px;
+    background: rgba(255,255,255,0.2);
+    margin: 20px 0;
+}
+.progress-bar {
+    height: 100%;
+    background: white;
+    width: 0%;
+    transition: width 0.3s;
+}
+
+/* Updated keyframes for smoother animations */
+@keyframes growShrink {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes slideLeft {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Improved minimize and maximize animations */
+.window.minimized {
+    animation: fadeOut 0.3s ease forwards;
+}
+
+.window.opening {
+    animation: growShrink 0.3s ease forwards;
+}
+
+/* Notifications sliding animation */
+.notification {
+    animation: slideLeft 0.5s ease-out;
+}
+
+/* Dynamically adjusting background customizer text/color */
+.color-option.dynamic-dark {
+    color: white; /* For dark backgrounds such as red, blue, and black */
+    text-shadow: none;
+}
+
+.color-option.dynamic-light {
+    color: black; /* For light background such as white */
+    text-shadow: none;
+}
+
+/* Define a special class for white background to make text/icons black */
+.desktop.white-bg .desktop-icon div,
+.desktop.white-bg svg {
+    fill: black !important;
+    color: black !important; /* For any additional text */
+}
+
+/* Add styles for browser window */
+.browser-content {
+    width: 100%;
+    height: calc(100% - 40px);
+    border: none;
+}
+.browser-controls {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    background: #f0f0f0;
+}
+.browser-controls input {
+    flex: 1;
+    padding: 5px;
+}
+.browser-controls button {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+</style>
+</head>
+<body w-tid="13">
+<div class="desktop" w-tid="15">
+    <div class="desktop-icon" onclick="createThisPCWindow()" w-tid="17">
+        <svg width="40" height="40" viewbox="0 0 24 24" fill="white" w-tid="19">
+            <path d="M21,16H3V4H21M21,2H3C1.89,2 1,2.89 1,4V16A2,2 0 0,0 3,18H10V20H8V22H16V20H14V18H21A2,2 0 0,0 23,16V4C23,2.89 22.1,2 21,2Z" w-tid="21"/>
+        </svg>
+        <div w-tid="23">This PC</div>
+    </div>
+    <div class="desktop-icon" onclick="createRecycleBinWindow()" w-tid="25">
+        <svg width="40" height="40" viewbox="0 0 24 24" fill="white" w-tid="27">
+            <path d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z" w-tid="29"/>
+        </svg>
+        <div w-tid="31">Recycle Bin</div>
+    </div>
+    <div class="desktop-icon" onclick="createErrorGenerator()" w-tid="33">
+        <svg width="40" height="40" viewbox="0 0 24 24" fill="white" w-tid="35">
+            <path d="M13,13H11V7H13M13,17H11V15H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" w-tid="37"/>
+        </svg>
+        <div w-tid="39">Error Generator</div>
+    </div>
+    <div class="desktop-icon" onclick="createPersonalizationApp()" w-tid="41">
+        <svg width="40" height="40" viewbox="0 0 24 24" fill="white" w-tid="43">
+            <path d="M19,11.5C19,11.5 17,13.67 17,15A2,2 0 0,0 19,17A2,2 0 0,0 21,15C21,13.67 19,11.5 19,11.5M5.21,10L10,5.21L14.79,10M16.56,8.94L7.62,0L6.21,1.41L8.59,3.79L3.44,8.94C2.85,9.5 2.85,10.47 3.44,11.06L8.94,16.56C9.23,16.85 9.62,17 10,17C10.38,17 10.77,16.85 11.06,16.56L16.56,11.06C17.15,10.47 17.15,9.5 16.56,8.94Z" w-tid="45"/>
+        </svg>
+        <div w-tid="47">Personalization</div>
+    </div>
+    <div class="desktop-icon" onclick="createNotificationCreatorApp()" w-tid="49">
+        <svg width="40" height="40" viewbox="0 0 24 24" fill="white" w-tid="51">
+            <path d="M14,19H18V21H6V19H10V14H14V19M12,3L1,9L12,15L23,9L12,3Z" w-tid="53"/>
+        </svg>
+        <div w-tid="55">Notification Creator</div>
+    </div>
+    <div class="desktop-icon" onclick="createWebSurfingBrowser()" w-tid="57">
+        <svg width="40" height="40" viewbox="0 0 24 24" fill="white" w-tid="59">
+            <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M13,7H11V11H7V13H11V17H13V13H17V11H13V7Z" w-tid="61"/>
+        </svg>
+        <div w-tid="63">WebSurfing</div>
+    </div>
+    <div class="desktop-icon" onclick="createBizcordApp()" w-tid="65">
+        <svg width="40" height="40" viewbox="0 0 32 32" fill="white" w-tid="67">
+            <path d="M26.875,5H5.125C3.953,5,3,5.897,3,7v18c0,1.103,0.953,2,2.125,2h19.75C26.047,27,27,26.103,27,25V7C27,5.897,26.047,5,26.875,5z M15,19H7v-2h8V19z M23,15H7v-2h16V15z" w-tid="69"/>
+        </svg>
+        <div w-tid="71">Bizcord</div>
+    </div>
+</div>
+
+<div class="taskbar" w-tid="73">
+    <div class="taskbar-left" w-tid="75">
+        <div class="start-btn" onclick="toggleStartMenu()" w-tid="77">
+            <svg viewbox="0 0 24 24" fill="white" w-tid="79">
+                <path d="M3,12V6.75L9,5.43V11.91L3,12M20,3V11.75L10,11.9V5.21L20,3M3,13L9,13.09V19.9L3,18.75V13M20,13.25V22L10,20.09V13.1L20,13.25Z" w-tid="81"/>
+            </svg>
+        </div>
+        <div class="taskbar-item" onclick="createNotificationCenter()" w-tid="83">Notifications</div>
+    </div>
+    <div class="taskbar-center" w-tid="85"></div>
+    <div class="taskbar-right" w-tid="87">
+        <div class="time" w-tid="89"></div>
+    </div>
+</div>
+
+<div class="start-menu" w-tid="91">
+    <div class="start-menu-item" onclick="createThisPCWindow()" w-tid="93">
+        <svg viewbox="0 0 24 24" fill="white" w-tid="95">
+            <path d="M21,16H3V4H21M21,2H3C1.89,2 1,2.89 1,4V16A2,2 0 0,0 3,18H10V20H8V22H16V20H14V18H21A2,2 0 0,0 23,16V4C23,2.89 22.1,2 21,2Z" w-tid="97"/>
+        </svg>
+        This PC
+    </div>
+    <div class="start-menu-item" onclick="createRecycleBinWindow()" w-tid="99">
+        <svg viewbox="0 0 24 24" fill="white" w-tid="101">
+            <path d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z" w-tid="103"/>
+        </svg>
+        Recycle Bin
+    </div>
+    <div class="start-menu-item" onclick="createErrorGenerator()" w-tid="105">
+        <svg viewbox="0 0 24 24" fill="white" w-tid="107">
+            <path d="M13,13H11V7H13M13,17H11V15H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" w-tid="109"/>
+        </svg>
+        Error Generator
+    </div>
+    <div class="start-menu-item" onclick="createPersonalizationApp()" w-tid="111">
+        <svg viewbox="0 0 24 24" fill="white" w-tid="113">
+            <path d="M19,11.5C19,11.5 17,13.67 17,15A2,2 0 0,0 19,17A2,2 0 0,0 21,15C21,13.67 19,11.5 19,11.5M5.21,10L10,5.21L14.79,10M16.56,8.94L7.62,0L6.21,1.41L8.59,3.79L3.44,8.94C2.85,9.5 2.85,10.47 3.44,11.06L8.94,16.56C9.23,16.85 9.62,17 10,17C10.38,17 10.77,16.85 11.06,16.56L16.56,11.06C17.15,10.47 17.15,9.5 16.56,8.94Z" w-tid="115"/>
+        </svg>
+        Personalization
+    </div>
+    <div class="start-menu-item" onclick="createNotificationCreatorApp()" w-tid="117">
+        <svg viewbox="0 0 24 24" fill="white" w-tid="119">
+            <path d="M14,19H18V21H6V19H10V14H14V19M12,3L1,9L12,15L23,9L12,3Z" w-tid="121"/>
+        </svg>
+        Notification Creator
+    </div>
+    <div class="start-menu-item" onclick="createWebSurfingBrowser()" w-tid="123">
+        <svg viewbox="0 0 24 24" fill="white" w-tid="125">
+            <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M13,7H11V11H7V13H11V17H13V13H17V11H13V7Z" w-tid="127"/>
+        </svg>
+        WebSurfing
+    </div>
+    <div class="start-menu-item" onclick="createBizcordApp()" w-tid="129">
+        <svg viewbox="0 0 32 32" fill="white" w-tid="131">
+            <path d="M26.875,5H5.125C3.953,5,3,5.897,3,7v18c0,1.103,0.953,2,2.125,2h19.75C26.047,27,27,26.103,27,25V7C27,5.897,26.047,5,26.875,5z M15,19H7v-2h8V19z M23,15H7v-2h16V15z" w-tid="133"/>
+        </svg>
+        Bizcord
+    </div>
+</div>
+
+<script w-tid="135">
+let zIndex = 1;
+const notifications = [];
+
+function toggleStartMenu() {
+    const startMenu = document.querySelector('.start-menu');
+    startMenu.style.display = startMenu.style.display === 'none' ? 'block' : 'none';
+}
+
+function updateTime() {
+    const timeDiv = document.querySelector('.time');
+    const now = new Date();
+    timeDiv.textContent = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+}
+
+function createThisPCWindow() {
+    const windowElement = document.createElement('div');
+    windowElement.className = 'window opening';
+    windowElement.style.left = '100px';
+    windowElement.style.top = '100px';
+    windowElement.style.zIndex = ++zIndex;
+    windowElement.style.width = '500px';
+    windowElement.style.height = '400px';
+
+    windowElement.innerHTML = `
+        <div class="title-bar">
+            <span>This PC</span>
+            <div class="title-bar-controls">
+                <div class="control-btn maximize" onclick="toggleFullscreen(this.closest('.window'))"></div>
+                <div class="control-btn close" onclick="this.closest('.window').remove()"></div>
+            </div>
+        </div>
+        <div class="window-content">
+            <div class="folder-content">
+                <div class="folder-item" onclick="alert('This is Documents!')">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="black">
+                        <path d="M10 4H14V8H19V20H5V4H10M14 4L19 8H14V4Z" />
+                    </svg>
+                    <span>Documents</span>
+                </div>
+                <div class="folder-item" onclick="alert('This is Downloads!')">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="black">
+                        <path d="M5,20H19V16L23,12L20,9V6H18V8H6V6H4V9L1,12L5,16V20M13,1H11V9H13V1M14.2,16H9.8L8.84,14L4.21,14.63L7.92,19H13.09L16.8,14.63L12.16,14L14.2,16Z" />
+                    </svg>
+                    <span>Downloads</span>
+                </div>
+                <div class="folder-item" onclick="alert('This is Pictures!')">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="black">
+                        <path d="M20,4A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4H20M8,8.75C7.03,8.75 6.25,9.53 6.25,10.5A2.25,2.25 0 0,0 8.5,10C9.47,9.52 10.25,10.5 9.25,10.5M18.03,12.03C18.41,12.44 18.22,13.15 17.62,14C17.03,14.85 16.5,15 15.91,14.5C15.34,14 15.3,13 16.03,12.5L18.03,12.03Z" />
+                    </svg>
+                    <span>Pictures</span>
+                </div>
+            </div>
+        </div>
+    `;
+
+    makeDraggable(windowElement);
+    document.querySelector('.desktop').appendChild(windowElement);
+}
+
+function createRecycleBinWindow() {
+    const windowElement = document.createElement('div');
+    windowElement.className = 'window opening';
+    windowElement.style.left = '150px';
+    windowElement.style.top = '150px';
+    windowElement.style.zIndex = ++zIndex;
+    windowElement.style.width = '500px';
+    windowElement.style.height = '400px';
+
+    windowElement.innerHTML = `
+        <div class="title-bar">
+            <span>Recycle Bin</span>
+            <div class="title-bar-controls">
+                <div class="control-btn maximize" onclick="toggleFullscreen(this.closest('.window'))"></div>
+                <div class="control-btn close" onclick="this.closest('.window').remove()"></div>
+            </div>
+        </div>
+        <div class="window-content">
+            <h3>Your Recycle Bin is empty!</h3>
+        </div>
+    `;
+
+    makeDraggable(windowElement);
+    document.querySelector('.desktop').appendChild(windowElement);
+}
+
+function createNotificationCreatorApp() {
+    const windowElement = document.createElement('div');
+    windowElement.className = 'window opening';
+    windowElement.style.left = '200px';
+    windowElement.style.top = '200px';
+    windowElement.style.zIndex = ++zIndex;
+    windowElement.style.width = '500px';
+    windowElement.style.height = '400px';
+
+    windowElement.innerHTML = `
+        <div class="title-bar">
+            <span>Notification Creator</span>
+            <div class="title-bar-controls">
+                <div class="control-btn maximize" onclick="toggleFullscreen(this.closest('.window'))"></div>
+                <div class="control-btn close" onclick="this.closest('.window').remove()"></div>
+            </div>
+        </div>
+        <div class="window-content">
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <label for="notificationSender">Notification Sender:</label>
+                <input type="text" id="notificationSender" placeholder="Enter notification sender...">
+                <label for="notificationMessage">Notification Message:</label>
+                <textarea id="notificationMessage" rows="4" placeholder="Enter notification message..."></textarea>
+                <label for="notificationIcon">Notification Icon:</label>
+                <select id="notificationIcon">
+                    <option value="ℹ️">ℹ️ Information</option>
+                    <option value="⚠️">⚠️ Warning</option>
+                    <option value="🚫">🚫 Error</option>
+                    <option value="❌">❌ Critical</option>
+                    <option value="🔔">🔔 Bell</option>
+                </select>
+                <button onclick="generateNotification()">Create Notification</button>
+            </div>
+        </div>
+    `;
+
+    makeDraggable(windowElement);
+    document.querySelector('.desktop').appendChild(windowElement);
+}
+
+function generateNotification() {
+    const sender = document.getElementById('notificationSender').value || 'Unknown App';
+    const message = document.getElementById('notificationMessage').value || 'No message provided.';
+    const icon = document.getElementById('notificationIcon').value;
+
+    showNotification(sender, message, icon);
+}
+
+function showNotification(sender, message, icon) {
+    const notification = document.createElement('div');
+    notification.className = 'notification';
+    notification.innerHTML = `
+        <div class="notification-icon">${icon}</div>
+        <div class="notification-content">
+            <div class="notification-sender">${sender}</div>
+            <div class="notification-message">${message}</div>
+        </div>
+    `;
+    
+    document.body.appendChild(notification);
+    notifications.push({sender, message, icon, timestamp: new Date()});
+    
+    setTimeout(() => {
+        notification.style.opacity = '0';
+        setTimeout(() => notification.remove(), 300);
+    }, 5000);
+}
+
+function createNotificationCenter() {
+    const window = document.createElement('div');
+    window.className = 'window notification-center';
+    window.style.right = '0';
+    window.style.top = '0';
+    window.style.width = '300px';
+    window.style.height = '100vh';
+    window.style.zIndex = ++zIndex;
+    
+    window.innerHTML = `
+        <div class="title-bar">
+            <span>Action Center</span>
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <button class="clear-notifications-btn" onclick="clearAllNotifications()">Clear All</button>
+                <div class="title-bar-controls">
+                    <div class="control-btn close" onclick="this.closest('.window').remove()"></div>
+                </div>
+            </div>
+        </div>
+        <div class="notification-list">
+            ${notifications.map(n => `
+                <div class="notification-item">
+                    <div class="notification-icon">${n.icon}</div>
+                    <div class="notification-content">
+                        <div class="notification-sender">${n.sender}</div>
+                        <div class="notification-message">${n.message}</div>
+                        <div class="notification-time">${n.timestamp.toLocaleTimeString()}</div>
+                    </div>
+                </div>
+            `).join('')}
+        </div>
+    `;
+    
+    document.querySelector('.desktop').appendChild(window);
+}
+
+function deleteFile(path) {
+    if (['Windows', 'System32', 'System'].includes(path)) {
+        showBlueScreen();
+        return;
+    }
+    // Normal file deletion logic
+}
+
+function showBlueScreen() {
+    const blueScreen = document.createElement('div');
+    blueScreen.className = 'bluescreen';
+    blueScreen.innerHTML = `
+        <div class="bluescreen-content">
+            <div class="sad-face">:(</div>
+            <h1>Your PC ran into a problem</h1>
+            <p>Critical system files have been deleted</p>
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
+            <p class="progress-text">Collecting error info: 0%</p>
+        </div>
+    `;
+    document.body.appendChild(blueScreen);
+    
+    let progress = 0;
+    const interval = setInterval(() => {
+        progress += 1;
+        blueScreen.querySelector('.progress-bar').style.width = `${progress}%`;
+        blueScreen.querySelector('.progress-text').textContent = 
+            `Collecting error info: ${progress}%`;
+        
+        if (progress >= 100) {
+            clearInterval(interval);
+            setTimeout(() => {
+                blueScreen.remove();
+                location.reload();
+            }, 1000);
+        }
+    }, 300);
+}
+
+function clearAllNotifications() {
+    notifications.length = 0;
+    const currentNotificationList = document.querySelector('.notification-list');
+    if (currentNotificationList) {
+        currentNotificationList.innerHTML = '<p style="padding:10px;">No notifications.</p>';
+    }
+}
+
+function makeDraggable(element) {
+    let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    element.querySelector('.title-bar').onmousedown = dragMouseDown;
+
+    function dragMouseDown(e) {
+        e.preventDefault();
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        document.onmouseup = closeDragElement;
+        document.onmousemove = elementDrag;
+        element.style.zIndex = ++zIndex;
+    }
+
+    function elementDrag(e) {
+        e.preventDefault();
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        element.style.top = (element.offsetTop - pos2) + "px";
+        element.style.left = (element.offsetLeft - pos1) + "px";
+    }
+
+    function closeDragElement() {
+        document.onmouseup = null;
+        document.onmousemove = null;
+    }
+}
+
+const errorMessages = [
+    {
+        title: "System Error",
+        message: "A problem has been detected and Windows has been shut down to prevent damage to your computer.",
+        icon: "⚠️"
+    },
+    {
+        title: "File Access Denied",
+        message: "You don't have permission to access this file. Please contact your system administrator.",
+        icon: "🚫"
+    },
+    {
+        title: "Update Required",
+        message: "Windows needs to install critical updates. Your PC will restart several times during this process.",
+        icon: "🔄"
+    },
+    {
+        title: "Memory Error",
+        message: "Your computer is low on memory. Please close some programs and try again.",
+        icon: "⚠️"
+    },
+    {
+        title: "Network Error",
+        message: "Windows cannot connect to the internet. Check your network settings and try again.",
+        icon: "📡"
+    }
+];
+
+function showRandomError() {
+    const error = errorMessages[Math.floor(Math.random() * errorMessages.length)];
+    const errorWindow = document.createElement('div');
+    errorWindow.className = 'error-window';
+    errorWindow.style.zIndex = ++zIndex;
+    
+    errorWindow.innerHTML = `
+        <div class="error-title">${error.title}</div>
+        <div class="error-content">
+            <div class="error-icon">${error.icon}</div>
+            <div class="error-message">${error.message}</div>
+        </div>
+        <div class="error-buttons">
+            <button class="error-btn" onclick="this.closest('.error-window').remove()">OK</button>
+        </div>
+    `;
+    
+    document.body.appendChild(errorWindow);
+    errorWindow.querySelector('.error-btn').focus();
+}
+
+function createErrorGenerator() {
+    const window = document.createElement('div');
+    window.className = 'window';
+    window.style.left = '100px';
+    window.style.top = '100px';
+    window.style.width = '400px';
+    window.style.zIndex = ++zIndex;
+
+    window.innerHTML = `
+        <div class="title-bar">
+            <span>Error Message Generator</span>
+            <div class="title-bar-controls">
+                <div class="control-btn maximize" onclick="toggleFullscreen(this.closest('.window'))"></div>
+                <div class="control-btn close" onclick="this.closest('.window').remove()"></div>
+            </div>
+        </div>
+        <div class="error-window-creator">
+            <input type="text" id="errorTitle" placeholder="Error Title" value="System Error">
+            <textarea id="errorMessage" placeholder="Error Message" rows="4">A problem has been detected...</textarea>
+            <select id="errorIcon">
+                <option value="⚠️">⚠️ Warning</option>
+                <option value="🚫">🚫 Stop</option>
+                <option value="ℹ️">ℹ️ Information</option>
+                <option value="❌">❌ Error</option>
+                <option value="🔄">🔄 Loading</option>
+                <option value="custom">Custom Icon</option>
+            </select>
+            <input type="text" id="customIcon" placeholder="Custom Icon (emoji or text)" style="display: none;">
+            <button onclick="generateCustomError()">Generate Error</button>
+        </div>
+    `;
+
+    makeDraggable(window);
+    document.querySelector('.desktop').appendChild(window);
+
+    // Show/hide custom icon input
+    window.querySelector('#errorIcon').addEventListener('change', (e) => {
+        window.querySelector('#customIcon').style.display = 
+            e.target.value === 'custom' ? 'block' : 'none';
+    });
+}
+
+function generateCustomError() {
+    const title = document.querySelector('#errorTitle').value;
+    const message = document.querySelector('#errorMessage').value;
+    const iconSelect = document.querySelector('#errorIcon');
+    const customIcon = document.querySelector('#customIcon');
+    const icon = iconSelect.value === 'custom' ? customIcon.value : iconSelect.value;
+
+    const errorWindow = document.createElement('div');
+    errorWindow.className = 'error-window';
+    errorWindow.style.zIndex = ++zIndex;
+    
+    errorWindow.innerHTML = `
+        <div class="error-title">${title}</div>
+        <div class="error-content">
+            <div class="error-icon">${icon}</div>
+            <div class="error-message">${message}</div>
+        </div>
+        <div class="error-buttons">
+            <button class="error-btn" onclick="this.closest('.error-window').remove()">OK</button>
+        </div>
+    `;
+    
+    document.body.appendChild(errorWindow);
+}
+
+function createPersonalizationApp() {
+    const window = document.createElement('div');
+    window.className = 'window';
+    window.style.left = '100px';
+    window.style.top = '100px';
+    window.style.width = '600px';
+    window.style.zIndex = ++zIndex;
+
+    window.innerHTML = `
+        <div class="title-bar">
+            <span>Personalization</span>
+            <div class="title-bar-controls">
+                <div class="control-btn maximize" onclick="toggleFullscreen(this.closest('.window'))"></div>
+                <div class="control-btn close" onclick="this.closest('.window').remove()"></div>
+            </div>
+        </div>
+        <div class="window-content">
+            <div class="window-content-tabs">
+                <div class="tab active" onclick="switchTab(this, 'background')">Background</div>
+                <div class="tab" onclick="switchTab(this, 'start-icon')">Start Icon</div>
+                <div class="tab" onclick="switchTab(this, 'dark-mode')">Dark Mode</div>
+            </div>
+            <div class="tab-content active" id="background">
+                <h3>Change Background</h3>
+                <div class="background-customizer">
+                    <div class="color-option" style="background: #0078D7;" onclick="changeBackground('#0078D7', this)">#0078D7</div>
+                    <div class="color-option" style="background: #ff0000;" onclick="changeBackground('#ff0000', this)">#FF0000</div>
+                    <div class="color-option" style="background: #000000;" onclick="changeBackground('#000000', this)">#000000</div>
+                    <div class="color-option" style="background: #ffffff;" onclick="changeBackground('#ffffff', this)">#FFFFFF</div>
+                </div>
+            </div>
+            <div class="tab-content" id="start-icon">
+                <h3>Change Start Icon</h3>
+                <div style="display: flex; gap: 20px; align-items: center;">
+                    <div class="start-icon-option" onclick="changeStartIcon('emoji', this)">😊</div>
+                    <div class="start-icon-option" onclick="useCustomStartMenuText()">Custom Text</div>
+                    <div class="start-icon-option" onclick="changeStartIcon('default', this)">
+                        <svg viewBox="0 0 24 24" fill="white" width="24" height="24">
+                            <path d="M3,12V6.75L9,5.43V11.91L3,12M20,3V11.75L10,11.9V5.21L20,3M3,13L9,13.09V19.9L3,18.75V13M20,13.25V22L10,20.09V13.1L20,13.25Z"/>
+                        </svg>
+                    </div>
+                    <div class="start-icon-option" onclick="changeStartIcon('blue', this)">
+                        <svg viewBox="0 0 24 24" fill="#0078D7" width="24" height="24">
+                            <path d="M3,12V6.75L9,5.43V11.91L3,12M20,3V11.75L10,11.9V5.21L20,3M3,13L9,13.09V19.9L3,18.75V13M20,13.25V22L10,20.09V13.1L20,13.25Z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content" id="dark-mode">
+                <h3>Toggle Dark Mode</h3>
+                <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <span>Activate Dark Mode</span>
+                    <input type="checkbox" id="darkModeToggle" onchange="toggleDarkMode()">
+                </div>
+            </div>
+        </div>
+    `;
+
+    makeDraggable(window);
+    document.querySelector('.desktop').appendChild(window);
+}
+
+function changeBackground(color, element) {
+    const desktop = document.querySelector('.desktop');
+    desktop.style.backgroundColor = color;
+    desktop.style.backgroundImage = 'none'; // Disable any background image
+    desktop.setAttribute('data-background', color); // Set data attribute for specific color options
+
+    document.querySelectorAll('.color-option').forEach((el) => el.classList.remove('active'));
+    element.classList.add('active');
+
+    document.querySelectorAll('.color-option').forEach((el) => {
+        // Reset dynamic classes first
+        el.classList.remove('dynamic-dark');
+        el.classList.remove('dynamic-light');
+    });
+
+    // Adjust text/icon colors based on the background color
+    if (color === '#ffffff') {
+        document.querySelector('.desktop').classList.add('white-bg');
+    } else {
+        document.querySelector('.desktop').classList.remove('white-bg');
+    }
+
+    // Apply text color logic based on the background color for personalization
+    if (color === '#000000' || color === '#0078D7' || color === '#ff0000') {
+        document.querySelectorAll('.color-option').forEach((el) => {
+            el.classList.add('dynamic-dark'); // White text for dark backgrounds
+        });
+    } else if (color === '#ffffff') {
+        document.querySelectorAll('.color-option').forEach((el) => {
+            el.classList.add('dynamic-light'); // Black text for light backgrounds
+        });
+    }
+
+    // Set text color default for other applications
+    if (color === '#000000') {
+        document.documentElement.style.setProperty('--primary-text', 'white'); // Black background -> white text
+    } else if (color === '#ffffff') {
+        document.documentElement.style.setProperty('--primary-text', 'black'); // White background -> black text
+    } else {
+        document.documentElement.style.setProperty('--primary-text', 'black'); // Default text color
+    }
+}
+
+function changeStartIcon(type, element, customText = null) {
+    const startBtn = document.querySelector('.start-btn');
+    startBtn.innerHTML = ''; // Clear existing content
+
+    if (type === 'emoji') {
+        startBtn.textContent = customText || '😊';
+    } else if (type === 'text') {
+        startBtn.textContent = customText || 'Start';
+    } else if (type === 'blue') {
+        startBtn.innerHTML = `
+            <svg viewBox="0 0 24 24" fill="#0078D7" width="24" height="24">
+                <path d="M3,12V6.75L9,5.43V11.91L3,12M20,3V11.75L10,11.9V5.21L20,3M3,13L9,13.09V19.9L3,18.75V13M20,13.25V22L10,20.09V13.1L20,13.25Z"/>
+            </svg>
+        `;
+    } else {
+        startBtn.innerHTML = `
+            <svg viewBox="0 0 24 24" fill="white" width="24" height="24">
+                <path d="M3,12V6.75L9,5.43V11.91L3,12M20,3V11.75L10,11.9V5.21L20,3M3,13L9,13.09V19.9L3,18.75V13M20,13.25V22L10,20.09V13.1L20,13.25Z"/>
+            </svg>
+        `;
+    }
+
+    // Highlight the selected option
+    document.querySelectorAll('.start-icon-option').forEach(el => el.classList.remove('active'));
+    if (element) element.classList.add('active');
+}
+
+function useCustomStartMenuText() {
+    const customText = prompt("Enter custom text for the Start Menu icon:");
+    if (customText) {
+        changeStartIcon('text', null, customText);
+    }
+}
+
+function toggleDarkMode() {
+    const isDarkMode = document.querySelector('#darkModeToggle').checked;
+
+    if (isDarkMode) {
+        document.documentElement.style.setProperty('--primary-bg', '#121212');
+        document.documentElement.style.setProperty('--primary-text', '#e0e0e0');
+        document.documentElement.style.setProperty('--secondary-bg', '#1e1e1e');
+    } else {
+        document.documentElement.style.setProperty('--primary-bg', '#0078D7');
+        document.documentElement.style.setProperty('--primary-text', '#ffffff');
+        document.documentElement.style.setProperty('--secondary-bg', '#f5f5f5');
+    }
+}
+
+function switchTab(tabElement, tabId) {
+    // Null-check for safer tab switching
+    if (!tabElement || !tabId) return;
+
+    // Highlight the clicked tab
+    document.querySelectorAll('.tab').forEach(tab => {
+        if (tab) tab.classList.remove('active');
+    });
+    tabElement.classList.add('active');
+
+    // Show the corresponding tab content
+    document.querySelectorAll('.tab-content').forEach(content => {
+        if (content) content.classList.remove('active');
+    });
+    const targetTabContent = document.getElementById(tabId);
+    if (targetTabContent) targetTabContent.classList.add('active');
+}
+
+function createWebSurfingBrowser() {
+    const window = document.createElement('div');
+    window.className = 'window';
+    window.style.left = '100px';
+    window.style.top = '100px';
+    window.style.width = '800px';
+    window.style.height = '600px';
+    window.style.zIndex = ++zIndex;
+
+    window.innerHTML = `
+        <div class="title-bar">
+            <span>WebSurfing Browser</span>
+            <div class="title-bar-controls">
+                <div class="control-btn maximize" onclick="toggleFullscreen(this.closest('.window'))"></div>
+                <div class="control-btn close" onclick="this.closest('.window').remove()"></div>
+            </div>
+        </div>
+        <div class="browser-controls">
+            <input type="text" id="urlInput" placeholder="Enter URL...">
+            <button onclick="loadURL(this)">Go</button>
+        </div>
+        <iframe class="browser-content" src="about:blank"></iframe>
+    `;
+
+    makeDraggable(window);
+    document.querySelector('.desktop').appendChild(window);
+}
+
+function loadURL(button) {
+    const urlInput = button.previousElementSibling;
+    const iframe = button.closest('.window').querySelector('iframe');
+    let url = urlInput.value;
+    
+    if (!url.startsWith('http://') && !url.startsWith('https://')) {
+        url = 'https://' + url;
+    }
+    
+    iframe.src = url;
+}
+
+function createBizcordApp() {
+    const window = document.createElement('div');
+    window.className = 'window';
+    window.style.left = '150px';
+    window.style.top = '150px';
+    window.style.width = '800px';
+    window.style.height = '600px';
+    window.style.zIndex = ++zIndex;
+
+    window.innerHTML = `
+        <div class="title-bar">
+            <span>Bizcord</span>
+            <div class="title-bar-controls">
+                <div class="control-btn maximize" onclick="toggleFullscreen(this.closest('.window'))"></div>
+                <div class="control-btn close" onclick="this.closest('.window').remove()"></div>
+            </div>
+        </div>
+        <iframe src="https://bizcord.on.websim.ai/?v=29" style="width: 100%; height: calc(100% - 30px); border: none;"></iframe>
+    `;
+
+    makeDraggable(window);
+    document.querySelector('.desktop').appendChild(window);
+}
+
+function toggleFullscreen(window) {
+    window.classList.toggle('fullscreen');
+    const maxButton = window.querySelector('.maximize');
+    if (window.classList.contains('fullscreen')) {
+        window.style.transition = 'all 0.3s ease-in-out';
+    } else {
+        window.style.transition = 'all 0.3s ease-in-out';
+    }
+}
+
+setInterval(updateTime, 1000);
+updateTime();
+</script>
+</body></html>
